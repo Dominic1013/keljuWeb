@@ -50,6 +50,12 @@ const Navbar = () => {
 
   return (
     <div className={styles.container}>
+      <input
+        type="checkbox"
+        name=""
+        id={"menuControl"}
+        className={styles.checkbox}
+      />
       <Link href="/" className={styles.logo}>
         <Image
           src="/logo1.png"
@@ -60,16 +66,14 @@ const Navbar = () => {
         ></Image>
       </Link>
       {/* //Because i dont want add every link  */}
+
       <div className={styles.links}>
         {/* <DarkModeToggle /> */}
         {links.map((link, index) => {
           return (
             <Link key={link.id} href={link.url} className={styles.link}>
-              {/* {link.title} */}
-              <h3 className={styles.linkText}>{link.title}</h3>
-              {index < links.length - 1 && (
-                <span className={styles.separator}>|</span>
-              )}
+              <h3>{link.title}</h3>
+              {index < links.length - 1 && <span>|</span>}
             </Link>
           );
         })}
@@ -79,7 +83,11 @@ const Navbar = () => {
           </button>
         )}
       </div>
-      <div className={styles.social}>
+
+      <label htmlFor="menuControl" className={styles.hamburger}>
+        <span>選單</span>
+      </label>
+      {/* <div className={styles.social}>
         <Image
           src="/1.png"
           width={15}
@@ -96,7 +104,7 @@ const Navbar = () => {
           alt="FB"
           layout="responsive"
         />
-      </div>
+      </div> */}
     </div>
   );
 };
