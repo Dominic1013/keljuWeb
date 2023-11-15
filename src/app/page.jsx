@@ -5,8 +5,9 @@ import styles from "./page.module.css";
 import Button from "@/components/button/Button";
 import ImgSlider from "@/components/ImgSlider/ImgSlider";
 import { useState } from "react";
+import Link from "next/link";
+import useSWR from "swr";
 
-import change1 from "public/change1.png";
 import HomepageCircle from "@/components/HomepageCircle/HomepageCircle";
 
 export default function Home() {
@@ -54,17 +55,27 @@ export default function Home() {
     },
   ];
 
+  //useState to get CircleInfoChange
   const [selectedTheme, setSelectedTheme] = useState(themes[0]);
   const handleCircleClick = (theme) => {
     setSelectedTheme(theme);
   };
+
+  //useSWR to get blogs
+  const fetcher = (...args) => fetch(...args).then((res) => res.json());
+  const { data, error } = useSWR(`/api/posts`, fetcher);
+  console.log(data);
+
+  // 處理加載和錯誤狀態
+  if (error) return <div>加載出錯</div>;
+  if (!themes) return <div>加載中...</div>;
 
   return (
     <div className={styles.container}>
       <ImgSlider />
 
       <section className={styles.infoSection}>
-        <h3 className={styles.infoSectionTitle}>遊玩主題</h3>
+        <h3 className={styles.h3}>❖ 遊玩主題 ❖</h3>
         <div className={styles.infoCircles}>
           {/* 這用themes.map來做出themeComponent，並且用theme放上所有的圖形跟文字 */}
 
@@ -85,7 +96,7 @@ export default function Home() {
         {selectedTheme && (
           <div className={styles.infoCard}>
             <div className={styles.infoCardWordContainer}>
-              <h3 className={styles.infoCardTitle}>{selectedTheme.title}</h3>
+              <h3 className={styles.infoCardTitle}>◎{selectedTheme.title}◎</h3>
               <p className={styles.infoCardContent}>{selectedTheme.content1}</p>
               <p className={styles.infoCardContent}>{selectedTheme.content2}</p>
               <Button
@@ -102,6 +113,55 @@ export default function Home() {
             </div>
           </div>
         )}
+      </section>
+
+      <section className={styles.blogSection}>
+        <h3 className={styles.h3}>❖ 精選文章 ❖</h3>
+        <div className={styles.blogContainer}>
+          <div className={styles.bigBlogContainer}>
+            {data && data.length > 0 && (
+              <Link href={`/blog/${data[0]._id}`} className={styles.bigBlog}>
+                <img src={data[0].img} alt="" className={styles.bigBlogImg} />
+                <h3 className={styles.blogTitle}>{data[0].title}</h3>
+                <p className={styles.blogText}>{data[0].desc}</p>
+              </Link>
+            )}
+          </div>
+          <div className={styles.smallBlogContainerAndButton}>
+            <div className={styles.smallBlogContainer}>
+              {data && data.length > 0 && (
+                <Link
+                  href={`/blog/${data[1]._id}`}
+                  className={styles.smallBlog}
+                >
+                  <img
+                    src={data[1].img}
+                    alt=""
+                    className={styles.smallBlogImg}
+                  />
+                  <h3 className={styles.blogTitle}>{data[1].title}</h3>
+                  <p className={styles.blogText}>{data[1].desc}</p>
+                </Link>
+              )}
+              {data && data.length > 0 && (
+                <Link
+                  href={`/blog/${data[2]._id}`}
+                  className={styles.smallBlog}
+                >
+                  <img
+                    src={data[2].img}
+                    alt=""
+                    className={styles.smallBlogImg}
+                  />
+                  <h3 className={styles.blogTitle}>{data[2].title}</h3>
+                  <p className={styles.blogText}>{data[2].desc}</p>
+                </Link>
+              )}
+            </div>
+
+            <Button url={"#"} text={"點我看更多文章"} />
+          </div>
+        </div>
       </section>
     </div>
   );

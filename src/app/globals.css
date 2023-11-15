@@ -18,17 +18,17 @@ a {
 }
 
 .theContainer {
-  max-width: 95%;
+  max-width: 80%;
   /* max-width: 1920px; */
   min-height: 100vh;
   margin: 0 auto;
-  padding: 0 3rem;
+  padding: 0 2rem;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
   /* position: relative; */
 
-  border: 2px solid red;
+  /* border: 2px solid red; */
 }
 
 .theme {

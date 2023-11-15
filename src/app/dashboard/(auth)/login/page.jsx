@@ -37,7 +37,7 @@ const Login = () => {
   return (
     <div className={styles.container}>
       <h1 className={styles.title}>建立帳號</h1>
-      <h2 className={styles.subtitle}>請進行登入才能進入個人版面</h2>
+      <h2 className={styles.subtitle}>請進行登入才能進入管理頁面</h2>
       <form onSubmit={handleSubmit} className={styles.form}>
         <input
           type="text"

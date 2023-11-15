@@ -14,9 +14,9 @@ const About = () => {
           className={styles.img}
         />
         <div className={styles.imgText}>
-          <h1 className={styles.imgTitle}>Digital Storytellers</h1>
+          <h1 className={styles.imgTitle}>革路聚聚地方創生 </h1>
           <h2 className={styles.imgDesc}>
-            Handcrafting award winning digital experiences
+            大武山下的美麗風土，看見排灣文化的傳承
           </h2>
         </div>
       </div>

@@ -43,7 +43,6 @@ export default function ImgSlider() {
           />
         </div>
       ))}
-      {/* 其他内容 */}
     </div>
   );
 }

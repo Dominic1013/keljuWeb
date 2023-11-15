@@ -22,6 +22,6 @@
 /* 在同一个 CSS 文件中 */
 @media (max-width: 768px) {
   .slider {
-    height: 50vh; /* 较小屏幕上的调整 */
+    height: 50vh; /* 小屏幕上的調整 */
   }
 }
