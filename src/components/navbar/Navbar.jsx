@@ -7,6 +7,7 @@ import styles from "./navbar.module.css";
 // import DarkModeToggle from "../DarkModeToggle/DarkModeToggle";
 import { signOut } from "next-auth/react";
 import { useSession } from "next-auth/react"; // check the state of session
+import { useState } from "react";
 
 // Nav Link array
 const links = [
@@ -48,15 +49,22 @@ const Navbar = () => {
   const session = useSession(); // check the state of session
   console.log(session); // check the state of session
 
+  const [menuState, setMenuState] = useState(false); // nav Links close or not
+  const handleLinkClick = () => {
+    setMenuState(false);
+    setHamburgerChange(false);
+  };
+  const [isHamburgerChange, setHamburgerChange] = useState(false);
+
+  const handleHamburgerChange = () => {
+    setMenuState(!menuState);
+    setHamburgerChange(!isHamburgerChange);
+    console.log(isHamburgerChange);
+  };
+
   return (
     <div className={styles.container}>
-      <input
-        type="checkbox"
-        name=""
-        id={"menuControl"}
-        className={styles.checkbox}
-      />
-      <Link href="/" className={styles.logo}>
+      <Link href="/" className={styles.logo} onClick={handleLinkClick}>
         <Image
           src="/logo1.png"
           width={320}
@@ -67,13 +75,18 @@ const Navbar = () => {
       </Link>
       {/* //Because i dont want add every link  */}
 
-      <div className={styles.links}>
+      <div className={styles.links} style={{ left: menuState ? "0" : "-100%" }}>
         {/* <DarkModeToggle /> */}
         {links.map((link, index) => {
           return (
-            <Link key={link.id} href={link.url} className={styles.link}>
+            <Link
+              key={link.id}
+              href={link.url}
+              className={styles.link}
+              onClick={handleLinkClick}
+            >
               <h3>{link.title}</h3>
-              {index < links.length - 1 && <span>|</span>}
+              {/* {index < links.length - 1 && <span>|</span>} */}
             </Link>
           );
         })}
@@ -84,9 +97,13 @@ const Navbar = () => {
         )}
       </div>
 
-      <label htmlFor="menuControl" className={styles.hamburger}>
-        <span>選單</span>
-      </label>
+      <label
+        htmlFor="menuControl"
+        className={`${styles.hamburger} ${
+          isHamburgerChange ? styles.hamburgerChange : ""
+        }`}
+        onClick={handleHamburgerChange}
+      ></label>
       {/* <div className={styles.social}>
         <Image
           src="/1.png"
