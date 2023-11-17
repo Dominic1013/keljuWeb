@@ -1,19 +1,156 @@
-.container {
-  display: flex;
-  height: 50px;
-  justify-content: space-between;
-  align-items: center;
-  font-size: 14px;
+@media screen and (min-width: 951px) {
+  .container {
+    display: flex;
+    width: 100%;
+    margin: 10rem 0rem;
+    padding: 1.5rem;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    /* border: 2px dotted #ae581b; */
+    background-color: #fff;
+  }
+
+  .bigItem {
+    display: flex;
+    width: 100%;
+
+    /* border: 3px solid green; */
+  }
+
+  .textContainer1 {
+    flex: 1;
+    /* border: 2px solid black; */
+    font-size: 1.5rem;
+  }
+  .textShopName {
+    margin-bottom: 1.5rem;
+  }
+
+  /* .textTitle {
+    line-height: 1rem;
+  } */
+
+  .textTitle {
+    margin-top: 1.5rem;
+    margin-bottom: 0.5rem;
+  }
+
+  .textContainer2 {
+    flex: 1;
+    text-align: end;
+    font-size: 1.5rem;
+
+    /* border: 2px solid black; */
+  }
+
+  .textContent::before {
+    content: "\00a0";
+  }
+
+  .smallItem {
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    align-self: flex-start;
+    /* border: 1px solid blue; */
+    width: 20%;
+  }
+
+  .logo {
+    width: 100%;
+    /* border: 1px solid red; */
+  }
+
+  .social {
+    display: flex;
+    margin-top: 0.5rem;
+    width: 40%;
+
+    /* border: 1px solid black; */
+  }
+
+  .icon {
+    /* width: 100%; */
+    flex: 1;
+    margin: 0.2rem;
+    /* padding: 0.2rem; */
+  }
 }
 
-.social {
-  display: flex;
-  gap: 10px;
+@media screen and (max-width: 950px) {
+  .container {
+    display: flex;
+    flex-direction: column-reverse;
+    flex-wrap: wrap;
+    width: 100%;
+    /* height: 80vh; */
+    border: 1px dotted #ae581b;
+    margin: 10rem 0rem;
+    padding: 1.5rem;
+    justify-content: center;
+    align-items: center;
+  }
+  .bigItem {
+    /* border: 3px solid green; */
+    width: 100%;
+    padding: 1rem;
+    flex: 2;
+  }
+  .textContainer1 {
+    margin-bottom: 2rem;
+    font-size: 1rem;
 
-  align-items: center;
-}
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  .textContainer2 {
+    margin-bottom: 2rem;
+    font-size: 1rem;
 
-.icon {
-  opacity: 0.8;
-  cursor: pointer;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  .textShopName {
+    background-color: #fff;
+    width: max-content;
+    padding: 0.5rem 1rem;
+    margin-bottom: 0.5rem;
+  }
+  .textTitle {
+    margin-top: 1rem;
+    margin-bottom: 0.2rem;
+  }
+
+  .smallItem {
+    display: flex;
+    flex-direction: column;
+    /* border: 1px solid red; */
+    width: 100%;
+    flex: 1;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .logo {
+    width: 20%;
+  }
+  .social {
+    display: flex;
+
+    width: 10%;
+    margin-top: 1rem;
+    gap: 0.5rem;
+    /* border: 1px solid black; */
+  }
+
+  .icon {
+    /* width: 100%; */
+    flex: 1;
+    margin: 0.1rem;
+    /* padding: 0.2rem; */
+  }
 }

@@ -9,6 +9,8 @@ import Link from "next/link";
 import useSWR from "swr";
 
 import HomepageCircle from "@/components/HomepageCircle/HomepageCircle";
+import InfoCard from "@/components/InfoCard/InfoCard";
+import HomePageBlog from "@/components/HomePageBlog/HomePageBlog";
 
 export default function Home() {
   const themes = [
@@ -18,8 +20,8 @@ export default function Home() {
       content1: "來自在地vuvu的匠心之作。",
       content2:
         "以工藝品作為載體，\n將排灣文化的古老生命經驗，\n融進作品之中，\n述說泰武鄉千百年的記憶與故事。",
-      circleImgUrl: "/co-space.jpeg",
-      infoImgUrl: "/co-space.jpeg",
+      circleImgUrl: "/co-space.jpg",
+      infoImgUrl: "/co-space.jpg",
       buttonUrl: "#",
       buttonText: "技藝與記憶",
     },
@@ -28,8 +30,8 @@ export default function Home() {
       content1: "了解一個地方真正的生活文化。",
       content2:
         "透過深度旅行，\n看見文化與生活的堅韌，\n這塊土地長出來的美麗姿態，\n等你一同來感受。",
-      circleImgUrl: "/travel.jpeg",
-      infoImgUrl: "/travel.jpeg",
+      circleImgUrl: "/travel.jpg",
+      infoImgUrl: "/travel.jpg",
       buttonUrl: "#",
       buttonText: "山的約定",
     },
@@ -38,8 +40,8 @@ export default function Home() {
       content1: "溫柔地接住所有回來的孩子。",
       content2:
         "我們設計青年輔導諮詢系統，\n從產業夥伴、社工、青年會，\n帶著青年一步一步落地、串接在地就業，\n回到血液中的根，生命的住所。",
-      circleImgUrl: "/youthEmpower.jpg",
-      infoImgUrl: "/youthEmpower.jpg",
+      circleImgUrl: "/youthEmpower2.jpg",
+      infoImgUrl: "/youthEmpower2.jpg",
       buttonUrl: "#",
       buttonText: "回家的門",
     },
@@ -91,32 +93,34 @@ export default function Home() {
         </div>
       </section>
 
-      <section className={styles.infoCardsChange}>
+      <section className={styles.infoCardsSection}>
         {/* 這裡根據圓形的圖片來放上不同的主題資訊，使用useState來抓住狀態 */}
         {selectedTheme && (
-          <div className={styles.infoCard}>
-            <div className={styles.infoCardWordContainer}>
-              <h3 className={styles.infoCardTitle}>◎{selectedTheme.title}◎</h3>
-              <p className={styles.infoCardContent}>{selectedTheme.content1}</p>
-              <p className={styles.infoCardContent}>{selectedTheme.content2}</p>
-              <Button
-                url={selectedTheme.buttonUrl}
-                text={selectedTheme.buttonText}
-              />
-            </div>
-            <div className={styles.infoCardImgContainer}>
-              <img
-                src={selectedTheme.infoImgUrl}
-                alt={selectedTheme.title}
-                className={styles.infoCardImg}
-              />
-            </div>
-          </div>
+          <InfoCard selectedTheme={selectedTheme} key={selectedTheme.title} />
+          // <div className={styles.infoCard}>
+          //   <div className={styles.infoCardWordContainer}>
+          //     <h3 className={styles.infoCardTitle}>◎{selectedTheme.title}◎</h3>
+          //     <p className={styles.infoCardContent}>{selectedTheme.content1}</p>
+          //     <p className={styles.infoCardContent}>{selectedTheme.content2}</p>
+          //     <Button
+          //       url={selectedTheme.buttonUrl}
+          //       text={selectedTheme.buttonText}
+          //     />
+          //   </div>
+          //   <div className={styles.infoCardImgContainer}>
+          //     <img
+          //       src={selectedTheme.infoImgUrl}
+          //       alt={selectedTheme.title}
+          //       className={styles.infoCardImg}
+          //     />
+          //   </div>
+          // </div>
         )}
       </section>
 
       <section className={styles.blogSection}>
-        <h3 className={styles.h3}>❖ 精選文章 ❖</h3>
+        <HomePageBlog data={data} />
+        {/* <h3 className={styles.h3}>❖ 精選文章 ❖</h3>
         <div className={styles.blogContainer}>
           <div className={styles.bigBlogContainer}>
             {data && data.length > 0 && (
@@ -161,7 +165,7 @@ export default function Home() {
 
             <Button url={"#"} text={"點我看更多文章"} />
           </div>
-        </div>
+        </div> */}
       </section>
     </div>
   );

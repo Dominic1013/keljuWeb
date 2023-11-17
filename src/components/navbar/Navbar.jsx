@@ -86,7 +86,6 @@ const Navbar = () => {
               onClick={handleLinkClick}
             >
               <h3>{link.title}</h3>
-              {/* {index < links.length - 1 && <span>|</span>} */}
             </Link>
           );
         })}
