@@ -1,6 +1,7 @@
 import React from "react";
 import styles from "./homepageCircle.module.css";
 import Image from "next/image";
+
 const HomepageCircle = ({ img, alt, title, onclick }) => {
   return (
     <div className={styles.infoCircle}>

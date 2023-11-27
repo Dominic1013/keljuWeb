@@ -14,14 +14,14 @@
   }
 
   .circleImg {
-    width: 80%;
-    height: 80%;
+    width: 70%;
+    height: 70%;
     border-radius: 50%;
 
     padding: 0.3rem;
     object-fit: cover;
-    border: 2px solid #435334;
-    transition: all 0.3s ease-in;
+    /* border: 2px solid #435334; */
+    transition: all 0.1s ease-in;
   }
 
   .circleText:hover {
@@ -60,7 +60,8 @@
 
     padding: 0.3rem;
     object-fit: cover;
-    border: 1px solid #435334;
+    transition: all 0.1s ease-in;
+    /* border: 1px solid #435334; */
   }
 
   .circleText:hover {
@@ -69,11 +70,11 @@
   .circleImg:hover {
     border: 2px solid #ae581b;
     cursor: pointer;
-
-    transition: all 0.3s ease-in;
   }
   .circleText {
     margin-top: 0.2rem;
-    font-size: 0.7rem;
+    font-size: 0.875rem;
+    display: flex;
+    text-align: center;
   }
 }

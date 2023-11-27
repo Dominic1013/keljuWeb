@@ -7,3 +7,8 @@
   width: max-content;
   color: white;
 }
+
+.link {
+  display: flex;
+  gap: 0.3rem;
+}

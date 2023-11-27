@@ -8,6 +8,7 @@ const HomePageBlog = ({ data }) => {
   return (
     <div className={styles.container}>
       <h3 className={styles.h3}>❖ 精選文章 ❖</h3>
+
       <div className={styles.blogContainer}>
         <div className={styles.bigBlogContainer}>
           {data && data.length > 0 && (

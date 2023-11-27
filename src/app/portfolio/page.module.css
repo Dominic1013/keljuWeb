@@ -1,26 +1,13 @@
 .mainTitle {
-  font-size: 100px;
+  font-size: 6rem;
 }
 
 .container {
+  width: 100%;
 }
 
 .selectTitle {
-  margin: 20px 0px;
-}
-
-.items {
-  display: flex;
-  gap: 50px;
-}
-
-.item {
-  border: 5px solid #bbb;
-  border-radius: 5px;
-  width: 300px;
-  height: 400px;
-  position: relative;
-  background-size: cover !important;
+  margin: 1.5rem 0rem;
 }
 
 .item:nth-child(1) {
@@ -32,15 +19,95 @@
 .item:nth-child(3) {
   background: url("/apps.jpg");
 }
-
-.title {
-  position: absolute;
-  right: 10px;
-  bottom: 10px;
-  font-size: 40px;
-  font-weight: bold;
+.item:nth-child(4) {
+  background: url("/apps.jpg");
 }
 
-.item:hover .title {
-  color: #53c28b;
+@media screen and (min-width: 951px) {
+  .itemsContainer {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    width: 100%;
+    height: 440px;
+    /* gap: 50px; */
+    border: 1px solid black;
+  }
+  .itemsBox {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+
+    border: 3px solid green;
+  }
+
+  .item {
+    border: 5px solid #bbb;
+    border-radius: 5px;
+    width: 50%;
+    /* min-width: 250px; */
+    position: relative;
+    background-size: cover !important;
+    margin: 0rem 1rem;
+    object-fit: contain;
+  }
+
+  .title {
+    position: absolute;
+    right: 10px;
+    bottom: 10px;
+    font-size: 40px;
+    font-weight: bold;
+  }
+
+  .item:hover .title {
+    color: #53c28b;
+  }
+}
+@media screen and (max-width: 950px) {
+  .itemsContainer {
+    display: flex;
+    flex-direction: column;
+    /* flex-wrap: wrap; */
+    justify-content: space-around;
+    align-items: center;
+    width: 100%;
+    height: 70vh;
+
+    /* gap: 50px; */
+    border: 5px solid black;
+  }
+
+  .itemsBox {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+
+    flex: 1;
+    border: 1px solid red;
+  }
+  .item {
+    border: 5px solid #bbb;
+    border-radius: 5px;
+
+    width: 30%;
+    /* height: 100%; */
+    /* height: 446.5px; */
+    position: relative;
+    background-size: cover !important;
+    margin: 1rem 0.1rem;
+    object-fit: contain;
+  }
+  .title {
+    position: absolute;
+    right: 10px;
+    bottom: 10px;
+    font-size: 5vw;
+    font-weight: bold;
+    color: #435334;
+  }
+  .item:hover .title {
+    color: #53c28b;
+  }
 }
