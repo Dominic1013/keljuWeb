@@ -10,7 +10,7 @@ const Portfolio = () => {
 
       <div className={styles.itemsContainer}>
         <div className={styles.itemsBox}>
-          <Link href="/portfolio/illustrations" className={styles.item}>
+          <Link href="/portfolio/illustrations" className={styles.item1}>
             {/* <Image
               src="/illustration.png"
               alt=""
@@ -19,7 +19,7 @@ const Portfolio = () => {
             ></Image> */}
             <span className={styles.title}>工藝</span>
           </Link>
-          <Link href="/portfolio/websites" className={styles.item}>
+          <Link href="/portfolio/websites" className={styles.item1}>
             {/* <Image
               src="/websites.jpg"
               alt=""
@@ -32,7 +32,7 @@ const Portfolio = () => {
           </Link>
         </div>
         <div className={styles.itemsBox}>
-          <Link href="/portfolio/application" className={styles.item}>
+          <Link href="/portfolio/application" className={styles.item2}>
             {/* <Image
               src="/apps.jpg"
               alt=""
@@ -43,7 +43,7 @@ const Portfolio = () => {
             ></Image> */}
             <span className={styles.title}>青培</span>
           </Link>
-          <Link href="/portfolio/application" className={styles.item}>
+          <Link href="/portfolio/application" className={styles.item2}>
             {/* <Image
               src="/apps.jpg"
               alt=""

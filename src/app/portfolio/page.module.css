@@ -10,17 +10,17 @@
   margin: 1.5rem 0rem;
 }
 
-.item:nth-child(1) {
-  background: url("/illustration.png");
+.item1:nth-child(1) {
+  background: url("/portfolio1.png");
 }
-.item:nth-child(2) {
-  background: url("/websites.jpg");
+.item1:nth-child(2) {
+  background: url("/portfolio2.png");
 }
-.item:nth-child(3) {
-  background: url("/apps.jpg");
+.item2:nth-child(1) {
+  background: url("/portfolio3.png");
 }
-.item:nth-child(4) {
-  background: url("/apps.jpg");
+.item2:nth-child(2) {
+  background: url("/portfolio4.png");
 }
 
 @media screen and (min-width: 951px) {
@@ -31,7 +31,7 @@
     width: 100%;
     height: 440px;
     /* gap: 50px; */
-    border: 1px solid black;
+    /* border: 1px solid black; */
   }
   .itemsBox {
     width: 100%;
@@ -39,10 +39,11 @@
     display: flex;
     justify-content: center;
 
-    border: 3px solid green;
+    /* border: 3px solid green; */
   }
 
-  .item {
+  .item1,
+  .item2 {
     border: 5px solid #bbb;
     border-radius: 5px;
     width: 50%;
@@ -51,6 +52,9 @@
     background-size: cover !important;
     margin: 0rem 1rem;
     object-fit: contain;
+    opacity: 0.85;
+    transition: all 0.1s ease;
+    position: relative;
   }
 
   .title {
@@ -59,10 +63,51 @@
     bottom: 10px;
     font-size: 40px;
     font-weight: bold;
+    z-index: 1;
   }
 
-  .item:hover .title {
-    color: #53c28b;
+  .item1:hover {
+    color: #ffffff;
+    opacity: 1;
+    border-color: #435334;
+  }
+  .item2:hover {
+    color: #ffffff;
+    opacity: 1;
+    border-color: #435334;
+  }
+
+  .item1::after {
+    content: "";
+    position: absolute;
+    z-index: 0;
+    top: 360px;
+    left: 0px;
+    /* width: 0px; */
+    height: 70px;
+    background-color: #435334;
+    transition: all 0.3s ease;
+    transform: scaleX(0);
+  }
+  .item1:hover::after {
+    width: 100%;
+    transform: scaleX(1);
+  }
+  .item2::after {
+    content: "";
+    position: absolute;
+    z-index: 0;
+    top: 360px;
+    left: 0px;
+    /* width: 0px; */
+    height: 70px;
+    background-color: #435334;
+    transition: all 0.3s ease;
+    transform: scaleX(0);
+  }
+  .item2:hover::after {
+    width: 100%;
+    transform: scaleX(1);
   }
 }
 @media screen and (max-width: 950px) {
@@ -87,7 +132,8 @@
     flex: 1;
     border: 1px solid red;
   }
-  .item {
+  .item1,
+  .item2 {
     border: 5px solid #bbb;
     border-radius: 5px;
 
@@ -107,7 +153,10 @@
     font-weight: bold;
     color: #435334;
   }
-  .item:hover .title {
-    color: #53c28b;
+  .item1:hover .title {
+    color: #ffffff;
+  }
+  .item2:hover .title {
+    color: #ffffff;
   }
 }

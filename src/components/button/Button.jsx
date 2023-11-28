@@ -19,9 +19,9 @@ const Button = ({ url, text }) => {
     <div className={styles.container}>
       <Link href={url} className={styles.link}>
         {text}
-        <div>
+        <span>
           <FontAwesomeIcon icon="fa-solid fa-arrow-pointer" />
-        </div>
+        </span>
       </Link>
     </div>
   );

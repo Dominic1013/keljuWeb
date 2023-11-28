@@ -6,9 +6,14 @@
   border-radius: 0.5rem;
   width: max-content;
   color: white;
+  transition: all 0.1s ease-in;
 }
 
 .link {
   display: flex;
   gap: 0.3rem;
+}
+
+.container:hover {
+  background-color: #53c28b;
 }
