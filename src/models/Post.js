@@ -4,6 +4,10 @@ const { Schema } = mongoose;
 
 const postSchema = new Schema(
   {
+    author: {
+      type: String,
+      required: true,
+    },
     title: {
       type: String,
       required: true,
@@ -21,6 +25,10 @@ const postSchema = new Schema(
       required: true,
     },
     username: {
+      type: String,
+      required: true,
+    },
+    userImg: {
       type: String,
       required: true,
     },

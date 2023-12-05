@@ -1,11 +1,14 @@
 import React from "react";
 import styles from "./page.module.css";
-import Link from "next/link";
+
 import Image from "next/image";
 import { notFound } from "next/navigation";
+import parse from "html-react-parser";
 
 async function getData(id) {
-  const res = await fetch(`http://localhost:3000/api/posts/${id}`);
+  const res = await fetch(`http://localhost:3000/api/posts/${id}`, {
+    cache: "no-store",
+  });
 
   if (!res.ok) {
     return notFound();
@@ -33,13 +36,13 @@ const BlogPost = async ({ params }) => {
           <p className={styles.desc}>{data.desc}</p>
           <div className={styles.author}>
             <Image
-              src={data.img}
+              src={data.userImg}
               alt=""
               width={40}
               height={40}
               className={styles.avatar}
             />
-            <span className={styles.username}>{data.username}</span>
+            <span className={styles.authorName}>{data.author}</span>
           </div>
         </div>
         <div className={styles.imageContainer}>
@@ -47,7 +50,8 @@ const BlogPost = async ({ params }) => {
         </div>
       </div>
       <div className={styles.content}>
-        <p className={styles.text}>{data.content}</p>
+        {/* <p className={styles.text}>{parse(data.content)}</p> */}
+        {parse(data.content)}
       </div>
     </div>
   );

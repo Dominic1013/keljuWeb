@@ -30,7 +30,7 @@ export const POST = async (request) => {
 
     await newPost.save();
 
-    return new NextResponse("Post has ben created", { status: 201 });
+    return new NextResponse("Post has been created", { status: 201 });
   } catch (err) {
     console.log(err);
     return new NextResponse("Database Error", { status: 500 });
