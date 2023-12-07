@@ -3,7 +3,7 @@ import Navbar from "@/components/navbar/Navbar";
 // import { ThemeProvider } from "@/context/ThemeContext";
 import AuthProvider from "@/components/AuthProvider/AuthProvider";
 
-import "./globals.css";
+import "./globals.scss";
 
 export const metadata = {
   title: "Kelju 革路聚聚",

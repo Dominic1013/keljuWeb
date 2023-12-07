@@ -1,7 +1,8 @@
 import React from "react";
-import styles from "./page.module.css";
+import styles from "./page.module.scss";
 import Link from "next/link";
 import Image from "next/image";
+import { format } from "date-fns";
 
 async function getData() {
   try {
@@ -21,29 +22,51 @@ async function getData() {
 
 const Blog = async () => {
   const data = await getData();
+
   return (
-    <div className={styles.mainContainer}>
-      {data.map((item) => (
-        <Link
-          href={`/blog/${item._id}`}
-          className={styles.container}
-          key={item.id}
-        >
-          <div className={styles.imageContainer}>
-            <Image
-              src={item.img}
-              alt=""
-              width={400}
-              height={250}
-              className={styles.image}
-            />
-          </div>
-          <div className={styles.content}>
-            <h1 className={styles.title}>{item.title}</h1>
-            <p className={styles.desc}>{item.desc}</p>
-          </div>
-        </Link>
-      ))}
+    <div className={styles.container}>
+      <h1>- 精選文章 -</h1>
+      <div className={styles.itemsContainer}>
+        {data.map((item) => (
+          <Link
+            href={`/blog/${item._id}`}
+            className={styles.itemContainer}
+            key={item.id}
+          >
+            <div className={styles.textAndImgContainer}>
+              <div className={styles.textContainer}>
+                <p>
+                  撰寫日期：{format(new Date(item.createdAt), "yyyy/MM/dd")}
+                </p>
+
+                <h2 className={styles.title}>{item.title}</h2>
+
+                {/* 電腦版的desc，手機版沒有 */}
+                <p className={styles.desc}>{item.desc}</p>
+              </div>
+              <div className={styles.imgContainer}>
+                <Image
+                  src={item.img}
+                  alt=""
+                  width={200}
+                  height={200}
+                  className={styles.image}
+                />
+              </div>
+            </div>
+            <div className={styles.authorContainer}>
+              <Image
+                src={item.userImg}
+                alt=""
+                width={40}
+                height={40}
+                className={styles.avatar}
+              />
+              <span className={styles.authorName}>{item.author}</span>
+            </div>
+          </Link>
+        ))}
+      </div>
     </div>
   );
 };

@@ -1,0 +1,111 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  gap: 6rem;
+
+  .posts {
+    // border: 2px solid red;
+
+    .post {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin: 1.5rem 0rem;
+      .postTitle {
+        font-size: 1.5rem;
+      }
+
+      .imgContainer {
+        width: 15vw;
+
+        .img {
+          object-fit: contain;
+        }
+      }
+      .delete {
+        cursor: pointer;
+        color: red;
+      }
+    }
+  }
+
+  .new {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+
+    h2 {
+      align-self: center;
+    }
+    .input {
+      padding: 0.5rem;
+      background-color: transparent;
+      border: 2px solid #bbb;
+      border-radius: 3px;
+      color: #000000;
+      font-size: 1rem;
+      font-weight: bold;
+    }
+
+    .photoInputContainer {
+      display: flex;
+      gap: 0.5rem;
+      align-items: center;
+    }
+
+    .previewPhotoContainer {
+      display: flex;
+      justify-content: start;
+      align-items: center;
+      gap: 0.5rem;
+      .userPhoto {
+        width: 5vw;
+
+        .userPhotoImg {
+          object-fit: contain;
+        }
+      }
+      .coverPhoto {
+        width: 20vw;
+        .coverPhotoImg {
+          object-fit: contain;
+        }
+      }
+      //   border: 2px solid green;
+    }
+
+    .choosePicture {
+      display: inline-block;
+      width: fit-content;
+      padding: 0.5rem;
+      font-size: 1rem;
+      //   font-weight: bold;
+      color: #435334;
+      background-color: #ffffff;
+      border: 2px solid #bbb;
+      transition: 0.1s all ease;
+      &:hover {
+        color: #ffffff;
+        background-color: #435334;
+        border: 2px solid #435334;
+      }
+    }
+
+    .button {
+      padding: 1rem;
+      cursor: pointer;
+      background-color: #53c28b;
+      border: none;
+      border-radius: 5px;
+      color: #eee;
+      font-weight: bold;
+    }
+  }
+}
+
+@media screen and (max-width: 950px) {
+  .postTitle {
+    font-size: 1.5rem;
+  }
+}

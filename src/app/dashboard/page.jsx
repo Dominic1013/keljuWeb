@@ -2,7 +2,7 @@
 
 import React, { useRef } from "react";
 import { useState } from "react";
-import styles from "./page.module.css";
+import styles from "./page.module.scss";
 import useSWR from "swr";
 import { useSession } from "next-auth/react"; // check the state of session
 import { useRouter } from "next/navigation";
@@ -133,7 +133,13 @@ const Dashboard = () => {
             : data?.map((post) => (
                 <div className={styles.post} key={post._id}>
                   <div className={styles.imgContainer}>
-                    <Image src={post.img} alt="" width={200} height={100} />
+                    <Image
+                      src={post.img}
+                      alt=""
+                      layout="responsive"
+                      width={200}
+                      height={100}
+                    />
                   </div>
                   <h2 className={styles.postTitle}>{post.title}</h2>
                   <span
@@ -148,7 +154,7 @@ const Dashboard = () => {
               ))}
         </div>
         <form id="form" className={styles.new} onSubmit={handleSubmit}>
-          <h1>新增文章</h1>
+          <h2>新增文章</h2>
           <input type="text" placeholder="author" className={styles.input} />
           <input type="text" placeholder="title" className={styles.input} />
           <input type="text" placeholder="desc" className={styles.input} />
@@ -177,27 +183,31 @@ const Dashboard = () => {
             <UploadButton setCoverPhoto={setCoverPhoto} />
           </div>
 
-          <div>
+          <div className={styles.previewPhotoContainer}>
             {userPhoto ? (
-              <Image
-                src={userPhoto}
-                alt=""
-                className={styles.userPhoto}
-                width={15}
-                height={15}
-                layout="responsive"
-              ></Image>
+              <div className={styles.userPhoto}>
+                <Image
+                  src={userPhoto}
+                  alt=""
+                  className={styles.userPhotoImg}
+                  width={15}
+                  height={15}
+                  layout="responsive"
+                ></Image>
+              </div>
             ) : null}
 
             {coverPhoto ? (
-              <Image
-                src={coverPhoto}
-                alt=""
-                className={styles.coverPhoto}
-                width={15}
-                height={15}
-                layout="responsive"
-              ></Image>
+              <div className={styles.coverPhoto}>
+                <Image
+                  src={coverPhoto}
+                  alt=""
+                  className={styles.coverPhotoImg}
+                  width={15}
+                  height={15}
+                  layout="responsive"
+                ></Image>
+              </div>
             ) : null}
           </div>
           <a
@@ -206,7 +216,7 @@ const Dashboard = () => {
             href="https://console.cloudinary.com/console/c-3f1c7b93be3e4e68bbcbfce55b13e0/media_library/search?q="
             // href="https://www.youtube.com/watch?v=_r1yA73i2Zs"
           >
-            進入雲端尋找「圖片網址」
+            ☞ 進入雲端尋找「圖片網址」
           </a>
           <Editor
             // apiKey={process.env.TINYMCE_API_KEY}

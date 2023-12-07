@@ -1,5 +1,5 @@
 import React from "react";
-import styles from "./page.module.css";
+import styles from "./page.module.scss";
 import Button from "@/components/button/Button";
 import Image from "next/image";
 
@@ -15,9 +15,12 @@ const Contact = () => {
       <div className={styles.content}>
         <div className={styles.imgContainer}>
           <Image
-            src="/contact.png"
+            src="/connect/connect_discuss.png"
             alt=""
-            fill={true}
+            // fill={true}
+            layout="responsive"
+            width={500}
+            height={800}
             className={styles.image}
           />
         </div>
