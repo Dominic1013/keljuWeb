@@ -62,6 +62,9 @@ const links = [
       },
     ],
   },
+];
+
+const authenticatedLinks = [
   {
     id: 6,
     title: "後台管理",
@@ -75,9 +78,9 @@ const links = [
       {
         id: 602,
         title: "文章撰寫",
-        url: "/dashboard", // 還沒寫 記得改成postWrite
+        url: "/dashboard/postWrite", //
       },
-      { id: 603, title: "聯繫管理", url: "/dashboard/shopInfo" }, // 還沒寫
+      { id: 603, title: "聯繫管理", url: "/dashboard/contactManagement" },
     ],
   },
 ];
@@ -192,9 +195,55 @@ const Navbar = () => {
         })}
 
         {session.status === "authenticated" && (
-          <button className={styles.logout} onClick={signOut}>
-            登出
-          </button>
+          // dashboard link
+          <div className={styles.authenticatedLinks}>
+            {authenticatedLinks.map((link, index) => {
+              return (
+                <div
+                  className={styles.linkContainer}
+                  // for PC user
+                  onMouseEnter={() =>
+                    link.sublinks?.length > 0 && setSubMenuState(link.id)
+                  }
+                  onMouseLeave={() => setSubMenuState(null)}
+                >
+                  <Link
+                    key={link.id}
+                    href={link.url}
+                    // className={styles.link}
+                    className={`${styles.link} ${
+                      clickedLinkId === link.id ? styles.clickedLink : ""
+                    }`}
+                    // for Mobile user
+                    onClick={(e) =>
+                      handleSubMenuClick(link.id, link.sublinks?.length > 0, e)
+                    }
+                  >
+                    <h3>{link.title}</h3>
+                  </Link>
+
+                  {/* 這是subMenu */}
+                  {link.sublinks && subMenuState === link.id && (
+                    <div className={styles.subLinks}>
+                      {link.sublinks.map((sublink) => (
+                        <Link
+                          className={styles.subLink}
+                          key={sublink.id}
+                          href={sublink.url}
+                          onClick={handleLinkClick}
+                        >
+                          ▸ {sublink.title}
+                        </Link>
+                      ))}
+                    </div>
+                  )}
+                </div>
+              );
+            })}
+            <button className={styles.logout} onClick={signOut}>
+              登出
+            </button>
+          </div>
         )}
       </div>
 

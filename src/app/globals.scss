@@ -19,6 +19,7 @@ body {
   overflow-x: hidden;
   background-color: #faf1e4;
   color: #435334;
+  scroll-behavior: smooth;
 }
 
 a {
@@ -31,7 +32,7 @@ a {
   /* max-width: 1920px; */
   min-height: 100vh;
   margin: 0 auto;
-  padding: 0 2rem;
+  padding: 0 3rem;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
