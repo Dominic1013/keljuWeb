@@ -3,18 +3,24 @@
 import React from "react";
 import { useState, useEffect } from "react";
 import styles from "./page.module.scss";
+import { format } from "date-fns";
+import Link from "next/link";
 
-const ContactManagement = () => {
+const Information = () => {
   // const data = await getdata();
   const [messages, setMessages] = useState([]); // 全部的messages
   const [currentPage, setCurrentPage] = useState(1);
-  const messagesPerPage = 6; // 6 messages in one page
+  const messagesPerPage = 10; // 10 messages in one page
 
   useEffect(() => {
-    fetch("/api/contactMessages")
+    fetch("/api/information")
       .then((res) => res.json())
       .then((data) => setMessages(data)); // 根据您的数据结构调整
   }, []);
+
+  useEffect(() => {
+    console.log(messages); // 每當 messages 改變時執行
+  }, [messages]);
 
   // 分頁邏輯
   const indexOfLastMessage = currentPage * messagesPerPage; //index:6, 12, 18... slice會排除此數，選前一個
@@ -39,21 +45,25 @@ const ContactManagement = () => {
 
   return (
     <div className={styles.container}>
-      <h1 id="h1">聯繫管理</h1>
+      <h1 id="h1">最新消息</h1>
       <div>
         <p>第 {currentPage} 頁</p>
       </div>
       <div className={styles.messageContainers}>
-        {currentMessages.map((item, index) => (
-          <div key={index} className={styles.messageContainer}>
-            <h3>from: {item.name}</h3>
-            <p>
-              <strong>Email:</strong> {item.email}
-            </p>
-            <p>
-              <strong>Message:</strong> {item.message}
-            </p>
-          </div>
+        {currentMessages.map((item) => (
+          //   <div key={index} className={styles.messageContainer}>
+          <Link
+            href={`/about/information/${item._id}`}
+            className={styles.messageContainer}
+            key={item.id}
+          >
+            <div>
+              <p>{format(new Date(item.createdAt), "yyyy/MM/dd")}</p>
+            </div>
+            <h3>{item.title}</h3>
+            {/* <p>{item.content}</p> */}
+          </Link>
+          //   </div>
         ))}
       </div>
       <div className={styles.buttons}>
@@ -100,4 +110,4 @@ const ContactManagement = () => {
   );
 };
 
-export default ContactManagement;
+export default Information;

@@ -19,12 +19,12 @@ const links = [
       {
         id: 101,
         title: "關於革路",
-        url: "/about",
+        url: "/about/aboutKelju",
       },
       {
         id: 102,
         title: "最新消息",
-        url: "/about/news", // 還沒寫
+        url: "/about/information", // 還沒寫
       },
     ],
   },
@@ -73,7 +73,7 @@ const authenticatedLinks = [
       {
         id: 601,
         title: "消息撰寫",
-        url: "/dashboard/newsWrite", // 還沒寫
+        url: "/dashboard/informationWrite", // 還沒寫
       },
       {
         id: 602,
