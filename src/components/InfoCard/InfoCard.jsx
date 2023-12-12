@@ -5,7 +5,7 @@ import Image from "next/image";
 
 const InfoCard = ({ selectedTheme }) => {
   return (
-    <div className={styles.container}>
+    <div className={styles.container} id="card">
       <div className={styles.infoCardWordContainer}>
         <h3 className={styles.infoCardTitle}>◎{selectedTheme.title}◎</h3>
         <p className={styles.infoCardContent1}>{selectedTheme.content1}</p>

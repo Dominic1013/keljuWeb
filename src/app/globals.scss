@@ -13,7 +13,7 @@ h2 {
 
 html,
 body {
-  font-family: "Noto Sans TC", "Microsoft JhengHei", sans-serif;
+  font-family: "Microsoft JhengHei", "Noto Sans TC", sans-serif;
 
   max-width: 100vw;
   overflow-x: hidden;
@@ -30,14 +30,14 @@ a {
 .theContainer {
   max-width: 85%;
   /* max-width: 1920px; */
-  min-height: 100vh;
+  // min-height: 100vh;
   margin: 0 auto;
-  padding: 0 3rem;
+  // padding: 0 16rem;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
 
-  /* border: 2px solid red; */
+  // border: 2px solid red;
 }
 
 /* .theme {

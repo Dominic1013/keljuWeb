@@ -1,7 +1,7 @@
 "use client";
 
 import Image from "next/image";
-import styles from "./page.module.css";
+import styles from "./page.module.scss";
 import Button from "@/components/button/Button";
 import ImgSlider from "@/components/ImgSlider/ImgSlider";
 import { useState } from "react";
@@ -14,7 +14,6 @@ import HomePageBlog from "@/components/HomePageBlog/HomePageBlog";
 
 export default function Home() {
   const themes = [
-    //搞到這邊
     {
       title: "工藝商品",
       content1: "來自在地vuvu的匠心之作。",
@@ -66,7 +65,6 @@ export default function Home() {
   //useSWR to get blogs
   const fetcher = (...args) => fetch(...args).then((res) => res.json());
   const { data, error } = useSWR(`/api/posts`, fetcher);
-  console.log(data);
 
   // 處理加載和錯誤狀態
   if (error) return <div>加載出錯</div>;
@@ -88,6 +86,7 @@ export default function Home() {
               alt={theme.title}
               title={theme.title}
               onclick={() => handleCircleClick(theme)} // 抓到個別circle的物件
+              href="#card"
             />
           ))}
         </div>
@@ -97,75 +96,11 @@ export default function Home() {
         {/* 這裡根據圓形的圖片來放上不同的主題資訊，使用useState來抓住狀態 */}
         {selectedTheme && (
           <InfoCard selectedTheme={selectedTheme} key={selectedTheme.title} />
-          // <div className={styles.infoCard}>
-          //   <div className={styles.infoCardWordContainer}>
-          //     <h3 className={styles.infoCardTitle}>◎{selectedTheme.title}◎</h3>
-          //     <p className={styles.infoCardContent}>{selectedTheme.content1}</p>
-          //     <p className={styles.infoCardContent}>{selectedTheme.content2}</p>
-          //     <Button
-          //       url={selectedTheme.buttonUrl}
-          //       text={selectedTheme.buttonText}
-          //     />
-          //   </div>
-          //   <div className={styles.infoCardImgContainer}>
-          //     <img
-          //       src={selectedTheme.infoImgUrl}
-          //       alt={selectedTheme.title}
-          //       className={styles.infoCardImg}
-          //     />
-          //   </div>
-          // </div>
         )}
       </section>
 
       <section className={styles.blogSection}>
         <HomePageBlog data={data} />
-        {/* <h3 className={styles.h3}>❖ 精選文章 ❖</h3>
-        <div className={styles.blogContainer}>
-          <div className={styles.bigBlogContainer}>
-            {data && data.length > 0 && (
-              <Link href={`/blog/${data[0]._id}`} className={styles.bigBlog}>
-                <img src={data[0].img} alt="" className={styles.bigBlogImg} />
-                <h3 className={styles.blogTitle}>{data[0].title}</h3>
-                <p className={styles.blogText}>{data[0].desc}</p>
-              </Link>
-            )}
-          </div>
-          <div className={styles.smallBlogContainerAndButton}>
-            <div className={styles.smallBlogContainer}>
-              {data && data.length > 0 && (
-                <Link
-                  href={`/blog/${data[1]._id}`}
-                  className={styles.smallBlog}
-                >
-                  <img
-                    src={data[1].img}
-                    alt=""
-                    className={styles.smallBlogImg}
-                  />
-                  <h3 className={styles.blogTitle}>{data[1].title}</h3>
-                  <p className={styles.blogText}>{data[1].desc}</p>
-                </Link>
-              )}
-              {data && data.length > 0 && (
-                <Link
-                  href={`/blog/${data[2]._id}`}
-                  className={styles.smallBlog}
-                >
-                  <img
-                    src={data[2].img}
-                    alt=""
-                    className={styles.smallBlogImg}
-                  />
-                  <h3 className={styles.blogTitle}>{data[2].title}</h3>
-                  <p className={styles.blogText}>{data[2].desc}</p>
-                </Link>
-              )}
-            </div>
-
-            <Button url={"#"} text={"點我看更多文章"} />
-          </div>
-        </div> */}
       </section>
     </div>
   );

@@ -2,6 +2,9 @@ $themeColor: #435334;
 
 @media screen and (min-width: 951px) {
   .container {
+    // padding: 0rem 16rem;
+    // max-width: 90%;
+    // border: 2px solid red;
     section {
       margin: 6rem 9rem;
       display: flex;
@@ -51,6 +54,7 @@ $themeColor: #435334;
 
 @media screen and (max-width: 950px) {
   .container {
+    padding: 0 0.5rem;
     section {
       margin: 6rem 0.5rem;
       display: flex;

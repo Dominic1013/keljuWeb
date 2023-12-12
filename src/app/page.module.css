@@ -4,6 +4,7 @@
   object-fit: contain;
   flex-direction: column;
   width: 100%;
+  padding: 0rem 16rem;
 
   /* border: 2px solid pink; */
 }
@@ -53,6 +54,9 @@
 }
 
 @media screen and (max-width: 950px) {
+  .container {
+    padding: 0rem;
+  }
   .infoSection {
     padding: 1rem;
     margin: 3rem 0rem;

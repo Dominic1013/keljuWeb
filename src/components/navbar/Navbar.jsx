@@ -132,7 +132,7 @@ const Navbar = () => {
   const handleHamburgerChange = () => {
     setMenuState(!menuState);
     setHamburgerChange(!isHamburgerChange);
-    console.log(isHamburgerChange);
+    // console.log(isHamburgerChange);
   };
 
   return (
@@ -143,10 +143,11 @@ const Navbar = () => {
           width={320}
           height={110}
           alt=""
-          layout="responsive"
+          className={styles.logoImage}
+          // layout="fill"
+          // layout="responsive"
         ></Image>
       </Link>
-      {/* //Because i dont want add every link  */}
 
       <div className={styles.links} style={{ left: menuState ? "0" : "-100%" }}>
         {/* <DarkModeToggle /> */}
@@ -159,6 +160,7 @@ const Navbar = () => {
                 link.sublinks?.length > 0 && setSubMenuState(link.id)
               }
               onMouseLeave={() => setSubMenuState(null)}
+              key={link.id}
             >
               <Link
                 key={link.id}

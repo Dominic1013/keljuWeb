@@ -3,9 +3,12 @@
 import React from "react";
 import { useState, useEffect } from "react";
 import styles from "./page.module.scss";
+import { useSession } from "next-auth/react"; // check the state of session
+import { useRouter } from "next/navigation";
 
 const ContactManagement = () => {
-  // const data = await getdata();
+  const session = useSession(); // check the state of session
+
   const [messages, setMessages] = useState([]); // 全部的messages
   const [currentPage, setCurrentPage] = useState(1);
   const messagesPerPage = 6; // 6 messages in one page
@@ -37,67 +40,75 @@ const ContactManagement = () => {
     //ceil的目的是將不足一頁的messages直接算成一頁。
   };
 
-  return (
-    <div className={styles.container}>
-      <h1 id="h1">聯繫管理</h1>
-      <div>
-        <p>第 {currentPage} 頁</p>
-      </div>
-      <div className={styles.messageContainers}>
-        {currentMessages.map((item, index) => (
-          <div key={index} className={styles.messageContainer}>
-            <h3>from: {item.name}</h3>
-            <p>
-              <strong>Email:</strong> {item.email}
-            </p>
-            <p>
-              <strong>Message:</strong> {item.message}
-            </p>
-          </div>
-        ))}
-      </div>
-      <div className={styles.buttons}>
-        <div className={styles.arrowContainer}>
-          <a
-            onClick={goToPreviousPage}
-            disabled={currentPage === 1}
-            className={styles.arrow}
-            href="#h1"
-          >
-            &lt;
-          </a>
+  if (session.status === "loading") {
+    return <p>Loading...</p>;
+  }
+  if (session.status === "unauthenticated") {
+    router?.push("/dashboard/login");
+  }
+  if (session.status === "authenticated") {
+    return (
+      <div className={styles.container}>
+        <h1 id="h1">聯繫管理</h1>
+        <div>
+          <p>第 {currentPage} 頁</p>
         </div>
-        {Array.from(
-          { length: wholePageLength }, // 總頁數
-          (
-            _,
-            i // i is index
-          ) => (
-            <div className={styles.paginateContainer}>
-              <a
-                key={i}
-                onClick={() => paginate(i + 1)} // i+1＝實際頁數, i為index。
-                className={styles.paginate}
-                href="#h1"
-              >
-                {i + 1}
-              </a>
+        <div className={styles.messageContainers}>
+          {currentMessages.map((item, index) => (
+            <div key={index} className={styles.messageContainer}>
+              <h3>from: {item.name}</h3>
+              <p>
+                <strong>Email:</strong> {item.email}
+              </p>
+              <p>
+                <strong>Message:</strong> {item.message}
+              </p>
             </div>
-          )
-        )}
-        <div className={styles.arrowContainer}>
-          <a
-            onClick={goToNextPage}
-            disabled={currentPage === wholePageLength}
-            className={styles.arrow}
-            href="#h1"
-          >
-            &gt;
-          </a>
+          ))}
+        </div>
+        <div className={styles.buttons}>
+          <div className={styles.arrowContainer}>
+            <a
+              onClick={goToPreviousPage}
+              disabled={currentPage === 1}
+              className={styles.arrow}
+              href="#h1"
+            >
+              &lt;
+            </a>
+          </div>
+          {Array.from(
+            { length: wholePageLength }, // 總頁數
+            (
+              _,
+              i // i is index
+            ) => (
+              <div className={styles.paginateContainer}>
+                <a
+                  key={i}
+                  onClick={() => paginate(i + 1)} // i+1＝實際頁數, i為index。
+                  className={styles.paginate}
+                  href="#h1"
+                >
+                  {i + 1}
+                </a>
+              </div>
+            )
+          )}
+          <div className={styles.arrowContainer}>
+            <a
+              onClick={goToNextPage}
+              disabled={currentPage === wholePageLength}
+              className={styles.arrow}
+              href="#h1"
+            >
+              &gt;
+            </a>
+          </div>
         </div>
       </div>
-    </div>
-  );
+    );
+  }
 };
 
 export default ContactManagement;

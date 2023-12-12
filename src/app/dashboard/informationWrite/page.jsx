@@ -223,7 +223,7 @@ const InformationWrite = () => {
           <div className={styles.photoInputContainer}>
             <input
               type="text"
-              placeholder="貼上封面圖片的雲端網址"
+              placeholder="*沒有封面圖片請勿填寫"
               className={styles.input}
               id="pasteCoverPhoto"
             />
