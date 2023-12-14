@@ -1,5 +1,5 @@
 import React from "react";
-import styles from "./page.modele.scss";
+import styles from "./page.module.scss";
 
 const TaiwuInfo = () => {
   return <div>TaiwuInfo</div>;

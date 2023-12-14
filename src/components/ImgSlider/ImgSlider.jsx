@@ -6,10 +6,10 @@ import Image from "next/image";
 import styles from "./ImgSlider.module.css"; // 引入 CSS 模块
 
 const images = [
-  "/change1.png",
-  "/change2.jpg",
-  "/change3.jpg",
-  "/change4.jpg",
+  "/homePage/imgSlider/change1.png",
+  "/homePage/imgSlider/change2.jpg",
+  "/homePage/imgSlider/change3.jpg",
+  "/homePage/imgSlider/change4.jpg",
   // 添加更多图片路径
 ];
 
