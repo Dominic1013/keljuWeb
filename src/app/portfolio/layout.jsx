@@ -4,7 +4,7 @@ import styles from "./page.module.scss";
 const Layout = ({ children }) => {
   return (
     <div>
-      <h3 className={styles.mainTitle}>服務介紹</h3>
+      {/* <h3 className={styles.mainTitle}>服務介紹</h3> */}
       {children}
     </div>
   );

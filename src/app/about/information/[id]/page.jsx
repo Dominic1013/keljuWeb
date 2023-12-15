@@ -5,6 +5,7 @@ import Image from "next/image";
 import { notFound } from "next/navigation";
 import parse from "html-react-parser";
 import { format } from "date-fns";
+import BreadCrumbs from "@/components/BreadCrumbs/BreadCrumbs";
 
 async function getData(id) {
   const res = await fetch(`http://localhost:3000/api/information/${id}`, {
@@ -29,8 +30,17 @@ export async function generateMetadata({ params }) {
 
 const InformationEach = async ({ params }) => {
   const data = await getData(params.id);
+  const breadCrumbs = [
+    { name: "首頁", url: "/" },
+    { name: "最新消息", url: "/about/information" },
+    { name: data.title, url: `/about/information/${data._id}` },
+  ];
+
   return (
     <div className={styles.container}>
+      <div className={styles.breadCrumbs}>
+        <BreadCrumbs breadCrumbs={breadCrumbs} />
+      </div>
       <h1 className={styles.title}>{data.title}</h1>
 
       <p className={styles.date}>

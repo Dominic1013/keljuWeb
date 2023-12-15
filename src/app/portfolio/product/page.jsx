@@ -1,11 +1,22 @@
 import Image from "next/image";
 import React from "react";
 import styles from "./page.module.scss";
+import BreadCrumbs from "@/components/BreadCrumbs/BreadCrumbs";
 
 const Product = () => {
+  const breadCrumbs = [
+    { name: "首頁", url: "/" },
+
+    { name: "服務介紹", url: "/portfolio" },
+    { name: "工藝商品", url: "/portfolio/product" },
+  ];
+
   return (
     <div className={styles.container}>
-      <h1>工藝商品</h1>
+      <div className={styles.breadCrumbs}>
+        <BreadCrumbs breadCrumbs={breadCrumbs} />
+      </div>
+      <h1>- 工藝商品 -</h1>
       <section className={styles.bannerSection}>
         <Image
           src="/portfolio/product/unsplash10.jpg"

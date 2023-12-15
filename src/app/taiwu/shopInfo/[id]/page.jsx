@@ -3,7 +3,9 @@ import styles from "./page.module.scss";
 import { items } from "../shopData";
 import Link from "next/link";
 import Image from "next/image";
+import BreadCrumbs from "@/components/BreadCrumbs/BreadCrumbs";
 const links = items.links;
+
 const getData = (id) => {
   let data = items.links[id - 1];
   return data;
@@ -11,9 +13,17 @@ const getData = (id) => {
 };
 const shopIntroduction = ({ params }) => {
   let data = getData(params.id);
+  const breadCrumbs = [
+    { name: "首頁", url: "/" },
+    { name: "合作店家", url: "/taiwu/shopInfo" },
+    { name: data.shopName, url: `/taiwu/shopInfo/${data._id}` },
+  ];
 
   return (
     <div className={styles.container}>
+      <div className={styles.breadCrumbs}>
+        <BreadCrumbs breadCrumbs={breadCrumbs} />
+      </div>
       <h1>{data.shopName}</h1>
       <section className={styles.item}>
         <div className={styles.imgContainer}>

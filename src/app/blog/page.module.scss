@@ -4,6 +4,12 @@
   align-items: center;
   gap: 2rem;
   //   border: 2px solid red;
+  .breadCrumbs {
+    align-self: start;
+
+    margin: 2rem 0rem;
+  }
+
   .itemsContainer {
     width: 100%;
 

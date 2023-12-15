@@ -9,6 +9,18 @@
 
   // border: 2px solid pink;
 }
+.fadeIn {
+  opacity: 0;
+  transform: translateY(20px);
+  visibility: hidden;
+  transition: opacity 1s ease-out, transform 1s ease-out, visibility 1s;
+}
+
+.visible {
+  opacity: 1;
+  transform: translateY(0);
+  visibility: visible;
+}
 
 @media screen and (min-width: 951px) {
   .infoSection {

@@ -1,8 +1,17 @@
 import React from "react";
 import styles from "./page.module.scss";
 import Image from "next/image";
+import BreadCrumbs from "@/components/BreadCrumbs/BreadCrumbs";
 
 const AboutKelju = () => {
+  //breadCrumbs
+
+  const breadCrumbs = [
+    { name: "首頁", url: "/" },
+
+    { name: "關於革路", url: "/about/aboutKelju" },
+  ];
+
   return (
     <div className={styles.container}>
       <div className={styles.imgContainer}>
@@ -21,6 +30,9 @@ const AboutKelju = () => {
             大武山下的美麗風土，看見排灣文化的傳承
           </h2>
         </div> */}
+      </div>
+      <div className={styles.breadCrumbs}>
+        <BreadCrumbs breadCrumbs={breadCrumbs} />
       </div>
       <div className={styles.sectionContainer}>
         <section>

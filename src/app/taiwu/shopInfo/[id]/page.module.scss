@@ -3,6 +3,12 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  .breadCrumbs {
+    align-self: start;
+    margin-left: 1rem;
+    margin-top: 2rem;
+    margin-bottom: 2rem;
+  }
   h1 {
     align-self: start;
     margin: 1rem;

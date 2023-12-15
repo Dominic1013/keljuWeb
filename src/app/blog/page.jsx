@@ -3,6 +3,7 @@ import styles from "./page.module.scss";
 import Link from "next/link";
 import Image from "next/image";
 import { format } from "date-fns";
+import BreadCrumbs from "@/components/BreadCrumbs/BreadCrumbs";
 
 async function getData() {
   try {
@@ -22,9 +23,17 @@ async function getData() {
 
 const Blog = async () => {
   const data = await getData();
+  const breadCrumbs = [
+    { name: "首頁", url: "/" },
+
+    { name: "精選文章", url: "/blog" },
+  ];
 
   return (
     <div className={styles.container}>
+      <div className={styles.breadCrumbs}>
+        <BreadCrumbs breadCrumbs={breadCrumbs} />
+      </div>
       <h1>- 精選文章 -</h1>
       <div className={styles.itemsContainer}>
         {data.map((item) => (

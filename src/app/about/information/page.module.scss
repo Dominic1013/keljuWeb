@@ -8,6 +8,12 @@
   // background-size: cover;
 
   //   border: 2px solid red;
+  .breadCrumbs {
+    align-self: start;
+    padding-left: 11rem;
+    padding-top: 2rem;
+    // border: 2px solid red;
+  }
   h1 {
     margin: 2rem 0rem;
   }
@@ -84,5 +90,10 @@
 @media screen and (max-width: 950px) {
   .container {
     padding: 0 0.5rem;
+    .breadCrumbs {
+      align-self: start;
+      padding-left: 0rem;
+      padding-top: 2rem;
+    }
   }
 }

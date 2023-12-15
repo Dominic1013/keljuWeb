@@ -2,11 +2,21 @@ import React from "react";
 import styles from "./page.module.scss";
 import Link from "next/link";
 import Image from "next/image";
+import BreadCrumbs from "@/components/BreadCrumbs/BreadCrumbs";
 
 const Portfolio = () => {
+  const breadCrumbs = [
+    { name: "首頁", url: "/" },
+
+    { name: "服務介紹", url: "/portfolio" },
+  ];
+
   return (
     <div className={styles.container}>
-      <h1 className={styles.selectTitle}>四大服務</h1>
+      <div className={styles.breadCrumbs}>
+        <BreadCrumbs breadCrumbs={breadCrumbs} />
+      </div>
+      <h1 className={styles.selectTitle}>- 四項服務 -</h1>
 
       <div className={styles.itemsContainer}>
         <div className={styles.itemsBox}>

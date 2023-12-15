@@ -5,6 +5,7 @@ import { useState, useEffect } from "react";
 import styles from "./page.module.scss";
 import { format } from "date-fns";
 import Link from "next/link";
+import BreadCrumbs from "@/components/BreadCrumbs/BreadCrumbs";
 
 const Information = () => {
   // const data = await getdata();
@@ -18,10 +19,6 @@ const Information = () => {
       .then((data) => setMessages(data)); // 根据您的数据结构调整
   }, []);
 
-  useEffect(() => {
-    console.log(messages); // 每當 messages 改變時執行
-  }, [messages]);
-
   // 分頁邏輯
   const indexOfLastMessage = currentPage * messagesPerPage; //index:6, 12, 18... slice會排除此數，選前一個
   const indexOfFirstMessage = indexOfLastMessage - messagesPerPage; //index:0, 6, 12, 18... slice會選擇此數
@@ -29,22 +26,28 @@ const Information = () => {
     indexOfFirstMessage,
     indexOfLastMessage // 排除所選的end，所以只會有6個messages
   );
-
   const paginate = (pageNumber) => setCurrentPage(pageNumber);
-
   const wholePageLength = Math.ceil(messages.length / messagesPerPage);
   // arrow
   const goToPreviousPage = () => {
     setCurrentPage((currentPage) => Math.max(1, currentPage - 1));
   };
-
   const goToNextPage = () => {
     setCurrentPage((currentPage) => Math.min(wholePageLength, currentPage + 1));
     //ceil的目的是將不足一頁的messages直接算成一頁。
   };
 
+  const breadCrumbs = [
+    { name: "首頁", url: "/" },
+
+    { name: "最新消息", url: "/about/information" },
+  ];
+
   return (
     <div className={styles.container}>
+      <div className={styles.breadCrumbs}>
+        <BreadCrumbs breadCrumbs={breadCrumbs} />
+      </div>
       <h1 id="h1">最新消息</h1>
       <div>
         <p>第 {currentPage} 頁</p>

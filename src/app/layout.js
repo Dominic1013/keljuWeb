@@ -2,8 +2,10 @@ import Footer from "@/components/footer/Footer";
 import Navbar from "@/components/navbar/Navbar";
 // import { ThemeProvider } from "@/context/ThemeContext";
 import AuthProvider from "@/components/AuthProvider/AuthProvider";
+import Loading from "./loading";
 
 import "./globals.scss";
+import { Suspense } from "react";
 
 export const metadata = {
   title: "Kelju 革路聚聚",
@@ -15,16 +17,18 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="zh-Hant">
+      <head />
       <body className="body">
         {/* <body className={inter.className}> */}
         {/* <ThemeProvider> */}
         <AuthProvider>
-          <div className="theContainer ">
+          {/* <Suspense fallback={<Loading />}> */}
+          <div className="theContainer">
             <Navbar />
-
             {children}
             <Footer />
           </div>
+          {/* </Suspense> */}
         </AuthProvider>
         {/* </ThemeProvider> */}
       </body>

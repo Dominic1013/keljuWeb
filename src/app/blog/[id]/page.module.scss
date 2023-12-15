@@ -8,6 +8,15 @@
   ol {
     margin-left: 1rem;
   }
+  .breadCrumbs {
+    align-self: start;
+
+    margin: 2rem 0rem;
+    ul,
+    ol {
+      margin-left: 0rem;
+    }
+  }
 
   //   border: 2px solid red;
   .title {

@@ -4,6 +4,7 @@ import React from "react";
 import styles from "./page.module.scss";
 import Button from "@/components/button/Button";
 import Image from "next/image";
+import BreadCrumbs from "@/components/BreadCrumbs/BreadCrumbs";
 
 // export const metadata = {
 //   title: "Keliu 革路聚聚 Contact Information",
@@ -45,8 +46,17 @@ const Contact = () => {
     }
   };
 
+  const breadCrumbs = [
+    { name: "首頁", url: "/" },
+
+    { name: "聯繫我們", url: "/contact" },
+  ];
+
   return (
     <div className={styles.container}>
+      <div className={styles.breadCrumbs}>
+        <BreadCrumbs breadCrumbs={breadCrumbs} />
+      </div>
       <h1 className={styles.title}>與 我 們 聯 繫 ！ </h1>
       <div className={styles.content}>
         <div className={styles.imgContainer}>

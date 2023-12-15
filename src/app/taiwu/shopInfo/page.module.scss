@@ -3,15 +3,20 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  .breadCrumbs {
+    align-self: start;
+    margin-left: 1rem;
+    margin-top: 2rem;
+  }
 
   //   border: 2px solid red;
   h1 {
-    margin: 3rem 0rem;
+    margin: 2rem 0rem;
   }
   .category {
     align-self: start;
     padding: 1rem;
-    margin: 0rem 0rem 3rem 2rem;
+    margin: 0rem 0rem 3rem 1rem;
     border-radius: 10px;
     // background-color: #fff;
     // color: #ae581b;

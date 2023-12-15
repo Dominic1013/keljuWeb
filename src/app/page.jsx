@@ -1,62 +1,21 @@
 "use client";
 
-import Image from "next/image";
 import styles from "./page.module.scss";
-import Button from "@/components/button/Button";
-import ImgSlider from "@/components/ImgSlider/ImgSlider";
-import { useState } from "react";
-import Link from "next/link";
+
+import ImgSlider_slick from "@/components/ImgSlider_slick/ImgSlider_slick";
+
+import { useState, useRef, useEffect } from "react";
+
 import useSWR from "swr";
 
 import HomepageCircle from "@/components/HomepageCircle/HomepageCircle";
 import InfoCard from "@/components/InfoCard/InfoCard";
 import HomePageBlog from "@/components/HomePageBlog/HomePageBlog";
+import { items } from "./themesData";
 
 export default function Home() {
-  const themes = [
-    {
-      title: "工藝商品",
-      content1: "來自在地vuvu的匠心之作。",
-      content2:
-        "以工藝品作為載體，\n將排灣文化的古老生命經驗，\n融進作品之中，\n述說泰武鄉千百年的記憶與故事。",
-      circleImgUrl: "/homePage/homePageCircle/co-space.jpg",
-      infoImgUrl: "/homePage/homePageCircle/co-space.jpg",
-      buttonUrl: "#",
-      buttonText: "技藝與記憶",
-    },
-    {
-      title: "風土旅行",
-      content1: "了解一個地方真正的生活文化。",
-      content2:
-        "透過深度旅行，\n看見文化與生活的堅韌，\n這塊土地長出來的美麗姿態，\n等你一同來感受。",
-      circleImgUrl: "/homePage/homePageCircle/travel.jpg",
-      infoImgUrl: "/homePage/homePageCircle/travel.jpg",
-      buttonUrl: "#",
-      buttonText: "山的約定",
-    },
-    {
-      title: "青年培力",
-      content1: "溫柔地接住所有回來的孩子。",
-      content2:
-        "我們設計青年輔導諮詢系統，\n從產業夥伴、社工、青年會，\n帶著青年一步一步落地、串接在地就業，\n回到血液中的根，生命的住所。",
-      circleImgUrl: "/homePage/homePageCircle/youthEmpower2.jpg",
-      infoImgUrl: "/homePage/homePageCircle/youthEmpower2.jpg",
-      buttonUrl: "#",
-      buttonText: "回家的門",
-    },
-    {
-      title: "產業串連",
-      content1: "在地夥伴一起走出好大的力量。",
-      content2:
-        "舉辦青年小聚，\n從吃喝玩樂到實現夢想，\n我們一同合作長出產業共創計畫，\n實現共享、共好的傳統價值。",
-      circleImgUrl: "/homePage/homePageCircle/speak.jpg",
-      infoImgUrl: "/homePage/homePageCircle/speak.jpg",
-      buttonUrl: "#",
-      buttonText: "合作共好",
-    },
-  ];
+  const { themes } = items;
 
-  //useState to get CircleInfoChange
   const [selectedTheme, setSelectedTheme] = useState(themes[0]);
   const handleCircleClick = (theme) => {
     setSelectedTheme(theme);
@@ -70,11 +29,66 @@ export default function Home() {
   if (error) return <div>加載出錯</div>;
   if (!themes) return <div>加載中...</div>;
 
+  const ref1 = useRef(null);
+  const ref2 = useRef(null);
+  const ref3 = useRef(null);
+  // ... 為每個區塊創建更多的 ref
+
+  const [isVisible1, setIsVisible1] = useState(false);
+  const [isVisible2, setIsVisible2] = useState(false);
+  const [isVisible3, setIsVisible3] = useState(false);
+  // ... 為每個區塊創建更多的狀態
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            if (entry.target === ref1.current && !isVisible1) {
+              setIsVisible1(true); // 只有在首次進入視口時改變狀態
+            }
+            if (entry.target === ref2.current && !isVisible2) {
+              setIsVisible2(true); // 只有在首次進入視口時改變狀態
+            }
+            if (entry.target === ref3.current && !isVisible3) {
+              setIsVisible3(true); // 只有在首次進入視口時改變狀態
+            }
+            // 為其他元素重複此邏輯
+          }
+          // ... 為每個區塊添加更多的條件判斷
+        });
+      },
+      {
+        rootMargin: "0px",
+        threshold: 0.1,
+      }
+    );
+
+    if (ref1.current) {
+      observer.observe(ref1.current);
+    }
+    if (ref2.current) {
+      observer.observe(ref2.current);
+    }
+    if (ref3.current) {
+      observer.observe(ref3.current);
+    }
+    // ... 為每個區塊添加更多的觀察
+
+    return () => observer.disconnect();
+  }, []);
+
   return (
     <div className={styles.container}>
-      <ImgSlider />
+      {/* <ImgSlider /> */}
+      <ImgSlider_slick />
 
-      <section className={styles.infoSection}>
+      <section
+        className={`${styles.infoSection} ${styles.fadeIn} ${
+          isVisible1 ? styles.visible : ""
+        }`}
+        ref={ref1}
+      >
         <h3 className={styles.h3}>❖ 遊玩主題 ❖</h3>
         <div className={styles.infoCircles}>
           {/* 這用themes.map來做出themeComponent，並且用theme放上所有的圖形跟文字 */}
@@ -92,14 +106,24 @@ export default function Home() {
         </div>
       </section>
 
-      <section className={styles.infoCardsSection}>
+      <section
+        className={`${styles.infoCardsSection} ${styles.fadeIn} ${
+          isVisible2 ? styles.visible : ""
+        }`}
+        ref={ref2}
+      >
         {/* 這裡根據圓形的圖片來放上不同的主題資訊，使用useState來抓住狀態 */}
         {selectedTheme && (
           <InfoCard selectedTheme={selectedTheme} key={selectedTheme.title} />
         )}
       </section>
 
-      <section className={styles.blogSection}>
+      <section
+        className={`${styles.blogSection} ${styles.fadeIn} ${
+          isVisible3 ? styles.visible : ""
+        }`}
+        ref={ref3}
+      >
         <HomePageBlog data={data} />
       </section>
     </div>

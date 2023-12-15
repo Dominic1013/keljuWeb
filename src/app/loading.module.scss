@@ -1,0 +1,18 @@
+.loadingContainer {
+  width: 100vw;
+  height: 100vh;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+
+  //   background-color: green;
+  .img {
+    position: absolute;
+    // background-color: aqua;
+    top: 40%;
+    left: 40%;
+    transform: translate(-50%, -50%);
+  }
+}
