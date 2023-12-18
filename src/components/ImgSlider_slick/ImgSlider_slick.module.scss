@@ -10,7 +10,7 @@
   //   border: 2px solid red;
   img {
     // position: absolute;
-    position: static;
+    // position: static;
     z-index: 0;
     width: 100%;
     // height: 100%;
@@ -28,6 +28,7 @@
 }
 
 .nextArrow {
+  position: absolute;
   right: 10px;
   top: 25%;
   z-index: 1;
@@ -40,14 +41,18 @@
   }
 
   .prevArrow {
-    left: 10%;
-    top: 25%;
+    opacity: 0;
+    position: absolute;
+    left: 2%;
+    top: 40%;
     z-index: 1;
   }
 
   .nextArrow {
-    right: 10px;
-    top: 25%;
+    opacity: 0;
+    position: absolute;
+    right: 2%;
+    top: 40%;
     z-index: 1;
   }
 }
