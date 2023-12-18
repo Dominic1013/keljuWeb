@@ -36,7 +36,7 @@ const Blog = async () => {
       </div>
       <h1>- 精選文章 -</h1>
       <div className={styles.itemsContainer}>
-        {data.map((item) => (
+        {data?.map((item) => (
           <Link
             href={`/blog/${item._id}`}
             className={styles.itemContainer}
