@@ -23,7 +23,7 @@ const ImgSlider_slick = () => {
     return (
       <div
         className={`${className} ${styles.nextArrow}`}
-        style={{ ...style, display: "block", background: "black" }}
+        style={{ ...style, display: "block" }}
         onClick={onClick}
       />
     );
@@ -34,7 +34,7 @@ const ImgSlider_slick = () => {
     return (
       <div
         className={`${className} ${styles.prevArrow}`}
-        style={{ ...style, display: "block", background: "black" }}
+        style={{ ...style, display: "block" }}
         onClick={onClick}
       />
     );

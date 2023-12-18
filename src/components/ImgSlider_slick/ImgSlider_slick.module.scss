@@ -18,6 +18,11 @@
     object-fit: cover;
     display: !important;
   }
+  ul {
+    z-index: 2;
+    top: 90%;
+    bottom: 0px;
+  }
 }
 
 .prevArrow {
@@ -37,7 +42,12 @@
 @media screen and (max-width: 950px) {
   .container {
     width: 110%;
-    height: 30vh;
+    // height: 30vh;
+    ul {
+      z-index: 2;
+      top: 85%;
+      bottom: 0px;
+    }
   }
 
   .prevArrow {
@@ -55,4 +65,8 @@
     top: 40%;
     z-index: 1;
   }
+  // .slick-dot {
+  //   z-index: 1;
+  //   bottom: 0px;
+  // }
 }
