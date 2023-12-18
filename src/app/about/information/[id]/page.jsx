@@ -8,9 +8,12 @@ import { format } from "date-fns";
 import BreadCrumbs from "@/components/BreadCrumbs/BreadCrumbs";
 
 async function getData(id) {
-  const res = await fetch(`http://localhost:3000/api/information/${id}`, {
-    cache: "no-store",
-  });
+  const res = await fetch(
+    `https://kelju-web.vercel.app/api/information/${id}`,
+    {
+      cache: "no-store",
+    }
+  );
 
   if (!res.ok) {
     return notFound();
