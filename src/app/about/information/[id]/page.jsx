@@ -9,7 +9,7 @@ import BreadCrumbs from "@/components/BreadCrumbs/BreadCrumbs";
 
 async function getData(id) {
   const res = await fetch(
-    `https://kelju-web.vercel.app/api/information/${id}`,
+    `${process.env.NEXT_PUBLIC_API_URL}/api/information/${id}`,
     {
       cache: "no-store",
     }
