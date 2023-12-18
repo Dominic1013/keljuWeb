@@ -62,7 +62,7 @@ const HomePageBlog = ({ data }) => {
             )}
           </div>
 
-          <Button url={"#"} text={"點我看更多文章"} />
+          <Button url={"/blog"} text={"點我看更多文章"} />
         </div>
       </div>
     </div>
