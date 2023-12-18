@@ -43,13 +43,13 @@ const ImgSlider_slick = () => {
   return (
     <div className={styles.container}>
       <Slider {...settings}>
-        <img src="/homePage/imgSlider/change1.jpg" alt="change1 " />
+        <img src="/homePage/imgSlider/slider1.jpg" alt="slider1 " />
 
-        <img src="/homePage/imgSlider/change22.jpg" alt="change2" />
+        <img src="/homePage/imgSlider/slider2.jpg" alt="slider2" />
 
-        <img src="/homePage/imgSlider/change11.jpg" alt="change3" />
+        <img src="/homePage/imgSlider/slider3.jpg" alt="slider3" />
 
-        <img src="/homePage/imgSlider/change33.jpg" alt="change4" />
+        <img src="/homePage/imgSlider/slider4.jpg" alt="slider4" />
 
         {/* // ...更多幻燈片 */}
       </Slider>
