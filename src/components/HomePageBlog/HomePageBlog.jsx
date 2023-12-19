@@ -7,7 +7,7 @@ import Image from "next/image";
 const HomePageBlog = ({ data }) => {
   return (
     <div className={styles.container}>
-      <h3 className={styles.h3}>❖ 精選文章 ❖</h3>
+      <h3 className={styles.h3}>❖ 革路來報報 ❖</h3>
 
       <div className={styles.blogContainer}>
         <div className={styles.bigBlogContainer}>

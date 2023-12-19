@@ -89,7 +89,7 @@ export default function Home() {
         }`}
         ref={ref1}
       >
-        <h3 className={styles.h3}>❖ 遊玩主題 ❖</h3>
+        <h3 className={styles.h3}>❖ 革路做什麼? ❖</h3>
         <div className={styles.infoCircles}>
           {/* 這用themes.map來做出themeComponent，並且用theme放上所有的圖形跟文字 */}
 

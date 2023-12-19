@@ -1,5 +1,5 @@
 import React from "react";
-import styles from "./infoCard.module.css";
+import styles from "./infoCard.module.scss";
 import Button from "../button/Button";
 import Image from "next/image";
 

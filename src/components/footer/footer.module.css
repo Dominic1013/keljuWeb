@@ -142,9 +142,9 @@
   .social {
     display: flex;
 
-    width: 10%;
+    width: 20%;
     margin-top: 1rem;
-    gap: 0.5rem;
+    /* gap: 0.5rem; */
     /* border: 1px solid black; */
   }
 
