@@ -1,18 +1,31 @@
-.loadingContainer {
-  width: 100vw;
-  height: 100vh;
+@media screen and (min-width: 951px) {
+  .loadingContainer {
+    width: 100vw;
+    height: 100vh;
 
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
 
-  //   background-color: green;
-  .img {
-    position: absolute;
-    // background-color: aqua;
-    top: 40%;
-    left: 40%;
-    transform: translate(-50%, -50%);
+    //   background-color: green;
+    .img {
+      position: absolute;
+      // background-color: aqua;
+      top: 40%;
+      left: 40%;
+      transform: translate(-50%, -50%);
+    }
+  }
+}
+
+@media screen and (max-width: 950px) {
+  .loadingContainer {
+    display: flex;
+    justify-content: center; // 水平置中
+    align-items: center; // 垂直置中
+    min-height: 100vh; // 使容器至少有視窗的高度
+    min-width: 100vw; // 使容器寬度為視窗寬度
+    // border: 2px solid red;
   }
 }

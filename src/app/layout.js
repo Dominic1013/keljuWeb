@@ -22,13 +22,13 @@ export default function RootLayout({ children }) {
         {/* <body className={inter.className}> */}
         {/* <ThemeProvider> */}
         <AuthProvider>
-          {/* <Suspense fallback={<Loading />}> */}
-          <div className="theContainer">
-            <Navbar />
-            {children}
-            <Footer />
-          </div>
-          {/* </Suspense> */}
+          <Suspense fallback={<Loading />}>
+            <div className="theContainer">
+              <Navbar />
+              {children}
+              <Footer />
+            </div>
+          </Suspense>
         </AuthProvider>
         {/* </ThemeProvider> */}
       </body>
